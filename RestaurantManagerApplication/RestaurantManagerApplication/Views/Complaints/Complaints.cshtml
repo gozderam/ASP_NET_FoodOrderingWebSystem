@@ -1,0 +1,65 @@
+
+@using RestaurantManagerApplication.Models;
+@model RestaurantManagerApplication.Models.ComplaintViewModel
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Your resturant's complaints</h1>
+    <p class="mb-4"></p>
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Content</th>
+                            <th>Response</th>
+                            <th>Open</th>
+                            <th>Order Id</th>
+                            <th>Attending employee</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Content</th>
+                            <th>Response</th>
+                            <th>Open</th>
+                            <th>Order Id</th>
+                            <th>Attending employee</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var complaint in Model.Complaints)
+                        {
+                        <tr>
+                            <td>@complaint.Content</td>
+                            <td>@complaint.Response</td>
+                            <td>@complaint.Open</td>
+                            <td>@complaint.OrderId</td>
+                            <td>@complaint.AttendingEmployee.Name @complaint.AttendingEmployee.Surname</td>
+                            <td>
+                                <a href="@Url.Action("Respond", "Complaints", new { Id = complaint.Id })" class="btn btn-light">
+                                    <span class="text">Respond</span>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+   
+
+</div>

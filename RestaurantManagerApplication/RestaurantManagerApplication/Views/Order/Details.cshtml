@@ -1,0 +1,38 @@
+﻿@using RestaurantManagerApplication.Models
+@model OrderModel
+<div class="container-fluid">
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.positions != null)
+                        @foreach (var item in Model.positions)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Description
+                                </td>
+                                <td>
+                                    @item.Price
+                                </td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

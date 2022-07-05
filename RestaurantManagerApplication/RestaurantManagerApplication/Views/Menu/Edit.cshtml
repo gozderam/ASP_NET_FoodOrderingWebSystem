@@ -1,0 +1,50 @@
+﻿@model RestaurantManagerApplication.Models.MenuPositionModel;
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-6 col-lg-6 col-md-6">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                @using (Html.BeginForm())
+                                {
+
+                                    <div class="form-group">
+                                        <label class="control-label ">Name</label>
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label ">Description</label>
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                    </div>
+                                    <div class="form-group row">
+                                        @*<div class="col-sm-6">
+                                            <label class="control-label ">MenuSection</label>
+                                            @Html.EditorFor(model => model.Menusec.Name, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                        </div>*@
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <label class="control-label ">Price</label>
+                                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                        </div>
+                                    </div>
+
+                                    <input type="submit" value="Save" class="btn btn-success " />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

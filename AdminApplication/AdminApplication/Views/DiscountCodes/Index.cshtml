@@ -1,0 +1,41 @@
+﻿@using AdminApplication.Models;
+@model AdminApplication.Models.NewDiscountCodeModel
+
+<div class="container-fluid">
+
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Create new discount code!</h1>
+    </div>
+    <form class="main_form" , asp-action="Index">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="margin-top:10px; margin-bottom:10px">
+                <input asp-for="Code" class="form-control" placeholder="Code..." />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style=" margin-top:10px; margin-bottom:10px">
+                <input asp-for="Percent" class="form-control" placeholder="1-99" />
+                <span asp-validation-for="Percent" class="text-danger"></span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="margin-top:10px; margin-bottom:10px">
+                <input asp-for="DateFrom" type="datetime-local" class="form-control" placeholder="DateFrom..." />
+                <span asp-validation-for="DateFrom" class="text-danger"></span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="margin-top:10px; margin-bottom:10px">
+                <input asp-for="DateTo" type="datetime-local" class="form-control" placeholder="DateTo..." />
+                <span asp-validation-for="DateTo" class="text-danger"></span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="margin-top:10px; margin-bottom:10px">
+                <input asp-for="RestaurantId" class="form-control" placeholder="RestaurantId or empty" />
+                <span asp-validation-for="RestaurantId" class="text-danger"></span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="margin-top:10px; margin-bottom:10px">
+                <button class="btn btn-primary btn-user btn-block" type="submit" style="width:200px">Create</button>
+            </div>
+            <hr />
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="margin-top:10px; margin-bottom:10px">
+                <button class="btn btn-primary btn-user btn-block" type="button" onclick="location.href='@Url.Action("DiscountCodes","DiscountCodes")'" style="width:200px">Return</button>
+            </div>
+        </div>
+    </form>
+</div>

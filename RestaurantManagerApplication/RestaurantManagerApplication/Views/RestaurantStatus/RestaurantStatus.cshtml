@@ -1,0 +1,26 @@
+﻿@using RestaurantManagerApplication.Models;
+@model RestaurantManagerApplication.Models.RestaurantStatusViewModel
+
+<div class="container-fluid">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">@Model.Message</h1>
+        @if (Model.IsRestaurateur)
+        {
+            if (Model.RestaurantStatus == Common.DTO.RestaurantStateDTO.active)
+            {
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <button class="btn btn-primary btn-user btn-block" type="button" onclick="location.href='@Url.Action("DeactivateRestaurant", "RestaurantStatus")'" style="width: 200px; margin: 10px">Deactivate Restaurant</button>
+                </div>
+            }
+            if (Model.RestaurantStatus == Common.DTO.RestaurantStateDTO.deactivated)
+            {
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <button class="btn btn-primary btn-user btn-block" type="button" onclick="location.href='@Url.Action("ReactivateRestaurant", "RestaurantStatus")'" style="width: 200px; margin: 10px">Reactivate Restaurant</button>
+                </div>
+            }
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <button class="btn btn-primary btn-user btn-block" type="button" onclick="location.href='@Url.Action("DeleteRestaurant", "RestaurantStatus", new {id = Model.RestaurantId})'" style="width: 200px; margin: 10px">Delete Restaurant</button>
+            </div>
+        }
+    </div>
+</div>

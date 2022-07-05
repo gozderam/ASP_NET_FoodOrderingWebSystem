@@ -1,0 +1,74 @@
+﻿@using AdminApplication.Models;
+@model AdminApplication.Models.RestaurantDataModel
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Restaurants Management</h1>
+    <p class="mb-4"></p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Restaurants Management</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date Created</th>
+                            <th>Address</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date Created</th>
+                            <th>Address</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var restaurant in Model.restaurants)
+                        {
+                            <tr>
+                                <td>@restaurant.name</td>
+                                <td>@restaurant.dateOfJoining</td>
+                                <td>@restaurant.address.city @restaurant.address.street</td>
+                                <td>@restaurant.state</td>
+                                <td>
+                                    @if (restaurant.state == Common.DTO.RestaurantStateDTO.active)
+                                    {
+                                        <a onclick="location.href='@Url.Action("BlockRestaurant", "RestaurantsManagement", new {id = restaurant.id})'" title="Block" data-toggle="tooltip"><i class="material-icons" style="color: red">arrow_circle_down</i></a>
+                                        <a onclick="location.href='@Url.Action("DeleteRestaurant", "RestaurantsManagement", new {id = restaurant.id})'" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons" style="color: red">&#xE5C9;</i></a>
+                                    }
+                                    else if (restaurant.state == Common.DTO.RestaurantStateDTO.disabled)
+                                    {
+                                        <a onclick="location.href='@Url.Action("ActivateRestaurant", "RestaurantsManagement", new {id = restaurant.id})'" title="Activate" data-toggle="tooltip"><i class="material-icons" style="color: green">arrow_circle_up</i></a>
+                                        <a onclick="location.href='@Url.Action("DeleteRestaurant", "RestaurantsManagement", new {id = restaurant.id})'" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons" style="color: red">&#xE5C9;</i></a>
+                                    }
+                                    else if (restaurant.state == Common.DTO.RestaurantStateDTO.blocked)
+                                    {
+                                        <a onclick="location.href='@Url.Action("UnblockRestaurant", "RestaurantsManagement", new {id = restaurant.id})'" title="Unblock" data-toggle="tooltip"><i class="material-icons" style="color: green">arrow_circle_up</i></a>
+                                        <a onclick="location.href='@Url.Action("DeleteRestaurant", "RestaurantsManagement", new {id = restaurant.id})'" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons" style="color: red">&#xE5C9;</i></a>
+                                    }
+                                    else if (restaurant.state == Common.DTO.RestaurantStateDTO.deactivated)
+                                    {
+                                        <a onclick="location.href='@Url.Action("DeleteRestaurant", "RestaurantsManagement", new {id = restaurant.id})'" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons" style="color: red">&#xE5C9;</i></a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

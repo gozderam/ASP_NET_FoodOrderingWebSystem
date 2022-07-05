@@ -1,0 +1,70 @@
+
+@using AdminApplication.Models;
+@model AdminApplication.Models.UserComplaintViewModel
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">User Complaints</h1>
+    <p class="mb-4"></p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+            @(Model.UserId == -1 ? "Provide User Id" : $"Complaints for user with id {Model.UserId}")</h6>
+
+        </div>
+        <div class="card-body">
+
+            <!-- Topbar Search -->
+            <form class=" form-inline mb-3 mw-100 navbar-search">
+                <div id="searchDiv" class="input-group">
+                    <input id="userIdInput" type="number" class="form-control bg-light border-0 small" placeholder="User Id..."
+                           aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button id="searchByUserId" class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Content</th>
+                            <th>Response</th>
+                            <th>Open</th>
+                            <th>Order Id</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Content</th>
+                            <th>Response</th>
+                            <th>Open</th>
+                            <th>Order Id</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var complaint in Model.Complaints)
+                        {
+                            <tr>
+                                <td>@complaint.Content</td>
+                                <td>@complaint.Response</td>
+                                <td>@complaint.Open</td>
+                                <td>@complaint.OrderId</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+   
+
+</div>

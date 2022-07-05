@@ -1,0 +1,91 @@
+﻿@using RestaurantManagerApplication.Models
+@model MenuSectionModel[]
+<div class="container-fluid">
+
+    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-nav">
+        <a href="@Url.Action("CreateSection", "Menu")" class="btn btn-success btn-icon-split ">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Create New Menu Section</span>
+        </a>
+    </div>
+    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-nav">
+        <a href="@Url.Action("ChoseSection", "Menu")" class="btn btn-success btn-icon-split ">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Create New Menu Position</span>
+        </a>
+    </div>
+    @foreach (MenuSectionModel sectionn in Model)
+    {
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                @sectionn.Name
+            </h6>
+        </div>
+        <div class="card-header py-3">
+            <a href="@Url.Action("EditSection", "Menu", new { id = sectionn.Id, oldName = sectionn.Name })" class="btn btn-light"><span class="text">Change Name</span></a>
+            <a href="@Url.Action("DeleteSection", "Menu", new { id = sectionn.Id })" class="btn btn-light">
+                <span class="text">Delete Section</span>
+            </a>
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (sectionn.MenuPositions != null)
+                            @foreach (var item in sectionn.MenuPositions)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Name
+                                    </td>
+
+                                    <td>
+                                        @item.Description
+                                    </td>
+                                    <td>
+                                        @item.Price
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Menu", new {id = item.Id, sectionId = sectionn.Id })" class="btn btn-light">
+                                            <span class="text">Edit</span>
+                                        </a>
+                                        <a href="@Url.Action("Delete", "Menu", new { id = item.Id })" class="btn btn-light">
+                                            <span class="text">Delete</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    }
+</div>

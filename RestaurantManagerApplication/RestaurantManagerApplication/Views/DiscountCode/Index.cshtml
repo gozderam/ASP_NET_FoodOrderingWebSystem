@@ -1,0 +1,78 @@
+﻿@using RestaurantManagerApplication.Models;
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <p class="mb-4">
+        DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank"
+                                                                   href="https://datatables.net">official DataTables documentation</a>.
+    </p>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Valid from</th>
+                            <th>Valid to</th>
+                            <th>Percent</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in (DiscountCodeModel[])Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Code
+                                </td>
+                                <td>
+                                    @item.DateFrom
+                                </td>
+                                <td>
+                                    @item.DateTo
+                                </td>
+                                <td>
+                                    @item.Percent
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "DiscountCode",new { Id=item.Id })" class="btn btn-light">
+                                        <span class="text">Delete</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Code</th>
+                            <th>Valid from</th>
+                            <th>Valid to</th>
+                            <th>Percent</th>
+                            <th>
+                                <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-nav">
+                                    <a href="@Url.Action("Create", "DiscountCode")" class="btn btn-success btn-icon-split ">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                        <span class="text">Create Discount Code</span>
+                                    </a>
+                                </div>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

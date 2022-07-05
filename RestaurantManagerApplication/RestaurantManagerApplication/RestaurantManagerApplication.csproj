@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\blank.cshtml" />
+    <Content Remove="Views\Home\buttons.cshtml" />
+    <Content Remove="Views\Home\cards.cshtml" />
+    <Content Remove="Views\Home\charts.cshtml" />
+    <Content Remove="Views\Home\forgotpassword.cshtml" />
+    <Content Remove="Views\Home\Login.cshtml" />
+    <Content Remove="Views\Home\Register.cshtml" />
+    <Content Remove="Views\Home\tables.cshtml" />
+    <Content Remove="Views\Home\Utilitiesanimation.cshtml" />
+    <Content Remove="Views\Home\utilitiesborder.cshtml" />
+    <Content Remove="Views\Home\utilitiescolor.cshtml" />
+    <Content Remove="Views\Home\utilitiesother.cshtml" />
+    <Content Remove="Views\Home\view404.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\view404.cshtml" />
+    <None Include="Views\Home\blank.cshtml" />
+    <None Include="Views\Home\buttons.cshtml" />
+    <None Include="Views\Home\cards.cshtml" />
+    <None Include="Views\Home\charts.cshtml" />
+    <None Include="Views\Home\forgotpassword.cshtml" />
+    <None Include="Views\Login\LoginRestaurateur.cshtml" />
+    <None Include="Views\Register\RegisterRestaurateur.cshtml" />
+    <None Include="Views\Home\tables.cshtml" />
+    <None Include="Views\Home\utilitiesborder.cshtml" />
+    <None Include="Views\Home\utilitiescolor.cshtml" />
+    <None Include="Views\Home\utilitiesother.cshtml" />
+    <None Include="Views\Home\Utilitiesanimation.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Common\Common.csproj" />
+    <ProjectReference Include="..\..\Shared\SharedLib\SharedLib.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

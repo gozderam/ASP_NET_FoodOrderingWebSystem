@@ -1,0 +1,91 @@
+﻿@using RestaurantManagerApplication.Models;
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    @if (Model == null || Model.Length == 0)
+    {
+        <p class="mb-4">There is no orders yet!</p>
+    }
+    else
+    {
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Address</th>
+                                <th>Order date</th>
+                                <th>Status</th>
+                                <th>Discount code</th>
+                                <th>Original Price</th>
+                                <th>Final Price</th>
+                                <th>Payment Method</th>
+                                <th>Menu Positions</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in (OrderModel[])Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.address.City @item.address.Street @item.address.PostalCode
+                                    </td>
+                                    <td>
+                                        @item.date
+                                    </td>
+                                    <td>
+                                        @item.state.ToString()
+                                    </td>
+                                    <td>
+                                        @item.discountcode.Code
+                                    </td>
+                                    <td>
+                                        @item.originalPrice
+                                    </td>
+                                    <td>
+                                        @item.finalPrice
+                                    </td>
+                                    <td>
+                                        @item.paymentMethod
+                                    </td>
+                                    <td>
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <tbody>
+                                                @if (item.positions != null)
+                                                    @foreach (var pos in item.positions)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @pos.Name
+                                                            </td>
+                                                            <td>
+                                                                @pos.Description
+                                                            </td>
+                                                            <td>
+                                                                @pos.Price
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("MarkRealised", "Order", new { Id = item.id })" class="btn btn-light">
+                                            <span class="text">Finalize</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

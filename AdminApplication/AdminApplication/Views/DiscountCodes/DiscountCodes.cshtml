@@ -1,0 +1,105 @@
+﻿@using AdminApplication.Models;
+@model AdminApplication.Models.DiscountCodesViewModel
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Discount Codes</h1>
+    <p class="mb-4"></p>
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <button class="btn btn-primary btn-user btn-block" type="button" onclick="location.href='@Url.Action("Index","DiscountCodes")'" style="width: 200px; margin: 10px">Add New</button>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Global Discount Codes</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Percent</th>
+                            <th>DateFrom</th>
+                            <th>DateTo</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Code</th>
+                            <th>Percent</th>
+                            <th>DateFrom</th>
+                            <th>DateTo</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var d in Model.globalCodes)
+                        {
+                            <tr>
+                                <td>@d.Code</td>
+                                <td>@d.Percent</td>
+                                <td>@d.DateFrom</td>
+                                <td>@d.DateTo</td>
+                                <td>
+                                    <a onclick="location.href='@Url.Action("DeleteDiscountCode", "DiscountCodes", new {id = d.Id})'" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons" data-toggle="tooltip" title="Delete" style="color: red">&#xE5C9;</i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Restaurants Discount Codes</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Percent</th>
+                            <th>DateFrom</th>
+                            <th>DateTo</th>
+                            <th>RestaurantId</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Code</th>
+                            <th>Percent</th>
+                            <th>DateFrom</th>
+                            <th>DateTo</th>
+                            <th>RestaurantId</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var d in Model.restaurantsCodes)
+                        {
+                            <tr>
+                                <td>@d.Code</td>
+                                <td>@d.Percent</td>
+                                <td>@d.DateFrom</td>
+                                <td>@d.DateTo</td>
+                                <td>@d.RestaurantId</td>
+                                <td>
+                                    <a onclick="location.href='@Url.Action("DeleteDiscountCode", "DiscountCodes", new {id = d.Id})'" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons" data-toggle="tooltip" title="Delete" style="color: red">&#xE5C9;</i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

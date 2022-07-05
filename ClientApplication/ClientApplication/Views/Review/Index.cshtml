@@ -1,0 +1,85 @@
+﻿@model ClientApplication.Models.ViewModels.NewReviewViewModel
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+@if (TempData["Message"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            alert('@TempData["Message"]');
+        });
+    </script>
+
+}
+
+<footer>
+    <div class="footer">
+        <div class="container-fluid" style="padding-bottom: 10px">
+            <div class="row">
+                <div class=" col-md-12">
+                    <h2>New<strong class="white"> Review</strong></h2>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <form class="main_form" asp-action="Index" asp-route-id="@Model.RestaurantId">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <input asp-for="Rating" class="form-control" placeholder="Rating(1-5)" />
+                                <span asp-validation-for="Rating" class="text-danger"></span>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <textarea asp-for="Content" class="textarea" placeholder="Message" type="text"></textarea>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <button class="send">Send</button>
+                            </div>
+                            <div>
+                                <span></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="img-box">
+                        <figure><img src="~/images/about-img.jpg" alt="img" /></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+@section Sidebar{
+    <nav id="sidebar">
+
+        <div id="dismiss">
+            <i class="fa fa-arrow-left"></i>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a asp-area="" asp-controller="Restaurants" asp-action="Index">Restaurants</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Restaurants" asp-action="FavouriteRestaurants">Favourite restaurants</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="User" asp-action="Orders">My Orders</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Complaints" asp-action="Complaints">My Complaints</a>
+            </li>
+        </ul>
+
+    </nav>
+}
+
+@section WebsiteMap{
+    <div class="col-md-12">
+        <ul class="lik">
+            <li> <a asp-area="" asp-controller="Restaurants" asp-action="Index">Restaurants</a></li>
+            <li> <a asp-area="" asp-controller="Restaurants" asp-action="FavouriteRestaurants">Favourite restaurants</a></li>
+            <li> <a asp-area="" asp-controller="User" asp-action="Orders">My Orders</a></li>
+            <li> <a asp-area="" asp-controller="Complaints" asp-action="Complaints">My Complaints</a></li>
+        </ul>
+    </div>
+}

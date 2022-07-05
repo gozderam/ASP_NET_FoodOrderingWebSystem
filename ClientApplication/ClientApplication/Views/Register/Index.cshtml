@@ -1,0 +1,121 @@
+﻿@model ClientApplication.Models.ViewModels.NewCustomerViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Spicyo</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="site" content="Home">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- owl css -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- responsive-->
+    <link rel="stylesheet" href="/css/responsive.css">
+    <!-- awesome fontfamily -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="full">
+                        <a class="logo" href="index.html"><img src="~/images/logo.png" alt="#" /></a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="full">
+                        <div class="right_header_info">
+                            <ul>
+                                <li class="dinone">Contact Us : <img style="margin-right: 15px;margin-left: 15px;" src="~/images/phone_icon.png" alt="#"><a href="#">987-654-3210</a></li>
+                                <li class="dinone"><img style="margin-right: 15px;" src="~/images/mail_icon.png" alt="#"><a href="#">demo@gmail.com</a></li>
+                                <li class="dinone"><img style="margin-right: 15px;height: 21px;position: relative;top: -2px;" src="~/images/location_icon.png" alt="#"><a href="#">104 New york , USA</a></li>
+                                <li class="button_user"><a class="button" asp-controller="Login" asp-action="Index">Login</a><a class="button active" asp-controller="Register" asp-action="Index">Register</a></li>
+                                <li>
+                                    <button type="button" id="sidebarCollapse" onclick="show()">
+                                        <img src="~/images/menu_icon.png" alt="#">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <footer>
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class=" col-md-12">
+                        <h2>Sign Up</h2>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <form class="main_form" , asp-action="Index" >
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <input asp-for="Name" class="form-control" placeholder="Name" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <input asp-for="Surname" class="form-control" placeholder="Surname" />
+                                    <span asp-validation-for="Surname" class="text-danger"></span>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <input asp-for="City" class="form-control" placeholder="City" />
+                                    <span asp-validation-for="City" class="text-danger"></span>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <input asp-for="Street" class="form-control" placeholder="Street" />
+                                    <span asp-validation-for="Street" class="text-danger"></span>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <input asp-for="Postcode" class="form-control" placeholder="Postcode" />
+                                    <span asp-validation-for="Postcode" class="text-danger"></span>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <button class="send" type="submit">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="img-box">
+                            <figure><img src="~/images/img.jpg" alt="img" /></figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <a asp-action="Index" asp-controller="Home">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
